@@ -24,10 +24,11 @@ class FileStorage:
         """Return the dictionary __objects."""
         return FileStorage.__objects
 
-    def new(self, instantiated_obj):
+    def new(self, inst_obj):
         """Set in __objects obj with key <obj_class_name>.id"""
-        obj_class_name = instantiated_obj.__class__.__name__
-        FileStorage.__objects["{}.{}".format(obj_class_name, instantiated_obj.id)] = instantiated_obj
+        obj_class_name = inst_obj.__class__.__name__
+        key = "{}.{}".format(obj_class_name, inst_obj.id)
+        FileStorage.__objects[key] = inst_obj
 
     def save(self):
         """Converts or Serialize instances/ __objects to the JSON file."""
